@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
+  <script src="./script.js" defer></script>
 </head>
 <body>
 <!-- This course was found at: https://github.com/wesbos/JavaScript30 as 01 - JavasCript Drum Kit -->
@@ -56,33 +57,5 @@
   <audio data-key="74" src="sounds/snare.wav"></audio>
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
-
-<script>
-  function playSound(e) {
-    // Get the audio data
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    // Get the diva data
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    // Audio Playing
-    if (!audio) return; // Stop the function from running alltogether
-    audio.currentTime = 0; // dont wait to sound before to stop to start a new one
-    audio.play();
-    // Add decoration when playing the sound
-    key.classList.add('playing');
-  }
-
-  function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;// Only accepts a tranform
-    this.classList.remove('playing');
-  }
-
-  // Remove playing class to every div
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  // Execute play sound
-  window.addEventListener('keydown', playSound);
-</script>
-
-
 </body>
 </html>
