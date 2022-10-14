@@ -62,6 +62,7 @@
 
         // Array.prototype.reduce()
         // 4. How many years did all the inventors live all together?
+        // https://www.w3schools.com/jsref/jsref_reduce.asp
         const totalYears = inventors.reduce(function(total, inventor) {
             t = total + (inventor.passed - inventor.year);
             console.log(t);
@@ -83,10 +84,23 @@
 
         // 7. sort Exercise
         // Sort the people alphabetically by last name
+        const sortedLastName = people.sort();
+        console.table(sortedLastName);
 
         // 8. Reduce Exercise
         // Sum up the instances of each of these
         const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+        // object is the total container and instance is the current item - reduce get throug every item in the array 1 by 1
+        const numInstances = data.reduce(function(object, instance) {
+            if (!(instance in object)) {
+                object[instance] = 1;
+            }
+            else {
+                object[instance]++
+            }
+            return object;
+        }, {});
+        console.table(numInstances);
 
     </script>
 </body>
